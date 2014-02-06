@@ -19,7 +19,7 @@ module.exports = function (opts) {
         
         png.decode(function (pixels) {
             var dx = png.width / opts.cols;
-            var dy = 2 * dx;
+            var dy = dx;
             
             for (var y = 0; y < png.height; y += dy) {
                 for (var x = 0; x < png.width; x += dx) {
@@ -27,10 +27,10 @@ module.exports = function (opts) {
                     
                     var ix = x256([ pixels[i], pixels[i+1], pixels[i+2] ]);
                     if (pixels[i+3] > 0) {
-                        c.background(ix).write(' ');
+                        c.background(ix).write('  ');
                     }
                     else {
-                        c.display('reset').write(' ');
+                        c.display('reset').write('  ');
                     }
                 }
                 c.display('reset').write('\r\n');
